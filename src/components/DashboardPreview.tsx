@@ -35,8 +35,8 @@ export default function DashboardPreview() {
 
   const tabs = [
     { id: "dashboard", label: t("dash_tab_dashboard"), icon: LayoutDashboard },
-    { id: "patients", label: t("dash_tab_patients"), icon: Users, badge: "1,284" },
-    { id: "appointments", label: t("dash_tab_appointments"), icon: CalendarIcon, badge: "24" },
+    { id: "patients", label: t("dash_tab_patients"), icon: Users, badge: "0" },
+    { id: "appointments", label: t("dash_tab_appointments"), icon: CalendarIcon, badge: "0" },
     { id: "chart", label: t("dash_tab_chart"), icon: Stethoscope },
     { id: "billing", label: t("dash_tab_billing"), icon: Receipt },
   ];
@@ -180,7 +180,7 @@ export default function DashboardPreview() {
                   </p>
                 </div>
                 <span className="hidden sm:inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/80 px-3 py-1 rounded-full">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Clinic Active • 24 Appointments Today
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Clinic Active • 0 Appointments Today
                 </span>
               </div>
 
@@ -193,9 +193,9 @@ export default function DashboardPreview() {
                       <Users className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl sm:text-3xl font-extrabold text-white mt-2">1,284</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-white mt-2">0</p>
                   <p className="text-[11px] text-emerald-400 mt-1 flex items-center gap-1 font-semibold">
-                    <TrendingUp className="w-3 h-3" /> +18 this month
+                    <TrendingUp className="w-3 h-3" /> 0 this month
                   </p>
                 </div>
 
@@ -206,9 +206,9 @@ export default function DashboardPreview() {
                       <CalendarIcon className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl sm:text-3xl font-extrabold text-white mt-2">24</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-white mt-2">0</p>
                   <p className="text-[11px] text-cyan-300 mt-1 flex items-center gap-1 font-semibold">
-                    <Clock className="w-3 h-3" /> Next patient at 09:00 AM
+                    <Clock className="w-3 h-3" /> No appointments scheduled
                   </p>
                 </div>
 
@@ -219,9 +219,9 @@ export default function DashboardPreview() {
                       <Activity className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl sm:text-3xl font-extrabold text-white mt-2">36</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-white mt-2">0</p>
                   <p className="text-[11px] text-indigo-300 mt-1 flex items-center gap-1 font-semibold">
-                    <CheckCircle2 className="w-3 h-3" /> 14 Completed today
+                    <CheckCircle2 className="w-3 h-3" /> 0 Completed today
                   </p>
                 </div>
 
@@ -232,9 +232,9 @@ export default function DashboardPreview() {
                       <CreditCard className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-xl sm:text-2xl font-extrabold text-white mt-2">245,000 DA</p>
+                  <p className="text-xl sm:text-2xl font-extrabold text-white mt-2">0 DA</p>
                   <p className="text-[11px] text-emerald-400 mt-1 flex items-center gap-1 font-semibold">
-                    <TrendingUp className="w-3 h-3" /> +12.4% vs last week
+                    <TrendingUp className="w-3 h-3" /> 0% vs last week
                   </p>
                 </div>
               </div>
@@ -352,7 +352,7 @@ export default function DashboardPreview() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold">Patient Records Directory</h3>
-                <span className="text-xs text-slate-400 font-mono">1,284 Patient Records</span>
+                <span className="text-xs text-slate-400 font-mono">0 Patient Records</span>
               </div>
 
               <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/80">
@@ -548,7 +548,7 @@ export default function DashboardPreview() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold">Invoicing & Receipts</h3>
-                <span className="text-xs text-emerald-400 font-mono font-bold">Total Today: 245,000 DA</span>
+                <span className="text-xs text-emerald-400 font-mono font-bold">Total Today: 0 DA</span>
               </div>
 
               <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/80">

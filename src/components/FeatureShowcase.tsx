@@ -52,7 +52,7 @@ export default function FeatureShowcase() {
                 <Users className="w-5 h-5 text-blue-400" />
                 <span className="text-sm font-bold text-white">Patient Record Directory</span>
               </div>
-              <span className="text-xs text-slate-400 font-mono">1,284 Total Patients</span>
+              <span className="text-xs text-slate-400 font-mono">0 Total Patients</span>
             </div>
 
             <div className="mt-4 space-y-3">
@@ -178,7 +178,7 @@ export default function FeatureShowcase() {
                 <Calendar className="w-5 h-5 text-cyan-400" />
                 <span className="text-sm font-bold text-white">Interactive Clinic Calendar</span>
               </div>
-              <span className="text-xs text-cyan-400 font-mono">Today: 24 Appointments</span>
+              <span className="text-xs text-cyan-400 font-mono">Today: 0 Appointments</span>
             </div>
 
             <div className="mt-4 space-y-2">
@@ -387,7 +387,7 @@ export default function FeatureShowcase() {
                 <CreditCard className="w-5 h-5 text-emerald-400" />
                 <span className="text-sm font-bold text-white">Invoice & Billing Manager</span>
               </div>
-              <span className="text-xs text-emerald-400 font-mono">Revenue: 245,000 DA</span>
+              <span className="text-xs text-emerald-400 font-mono">Revenue: 0 DA</span>
             </div>
 
             <div className="mt-4 p-4 rounded-xl bg-slate-800/60 border border-slate-700/60 space-y-2 text-xs">
@@ -500,12 +500,12 @@ export default function FeatureShowcase() {
             <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
               <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
                 <span className="text-slate-400 block">Monthly Appointments</span>
-                <span className="text-xl font-bold text-white mt-1 block">412 Visits</span>
-                <span className="text-[10px] text-emerald-400">+8.4% vs August</span>
+                <span className="text-xl font-bold text-white mt-1 block">0 Visits</span>
+                <span className="text-[10px] text-emerald-400">0% vs August</span>
               </div>
               <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
                 <span className="text-slate-400 block">Treatments Completed</span>
-                <span className="text-xl font-bold text-white mt-1 block">584 Procedures</span>
+                <span className="text-xl font-bold text-white mt-1 block">0 Procedures</span>
                 <span className="text-[10px] text-cyan-400">Top: Scaling & Restorations</span>
               </div>
             </div>
