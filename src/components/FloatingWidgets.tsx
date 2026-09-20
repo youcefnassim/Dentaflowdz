@@ -143,18 +143,20 @@ export default function FloatingWidgets() {
               </button>
 
               <a
-                href="tel:+213776665110"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 hover:border-blue-300 text-slate-800 text-xs font-semibold transition-all hover:bg-slate-50"
+                href="https://wa.me/213776665110"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-between p-3 rounded-xl bg-emerald-50 border border-emerald-200 hover:border-emerald-400 text-slate-800 text-xs font-semibold transition-all hover:bg-emerald-100/50"
               >
                 <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-blue-600" />
+                  <MessageSquare className="w-4 h-4 text-emerald-600" />
                   <div>
-                    <p className="text-slate-900 font-bold">Call Clinic Hotline</p>
-                    <p className="text-[10px] text-slate-500 font-mono">+213 776 665 110</p>
+                    <p className="text-slate-900 font-bold">Contact Support sur WhatsApp</p>
+                    <p className="text-[10px] text-emerald-700 font-mono">+213 776 665 110</p>
                   </div>
                 </div>
-                <span className="text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-medium border border-emerald-100">
-                  Instant
+                <span className="text-[10px] text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded font-bold border border-emerald-200">
+                  WhatsApp
                 </span>
               </a>
 
@@ -175,8 +177,8 @@ export default function FloatingWidgets() {
               </a>
 
               <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
-                <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3 text-blue-600" /> Sun - Thu: 8:30 AM - 5:30 PM
+                <span className="flex items-center gap-1 text-emerald-600 font-semibold">
+                  <Clock className="w-3.5 h-3.5 text-emerald-600" /> 24/7 Support Active
                 </span>
                 <span className="flex items-center gap-1 text-emerald-600 font-medium">
                   <ShieldCheck className="w-3.5 h-3.5" /> Secure

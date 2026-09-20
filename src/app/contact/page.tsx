@@ -96,22 +96,29 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-xs uppercase tracking-wider">Direct Hotline</h4>
-                  <p className="text-slate-300 mt-0.5">+213 776 665 110</p>
+                  <h4 className="font-bold text-white text-xs uppercase tracking-wider">WhatsApp Support</h4>
+                  <a
+                    href="https://wa.me/213776665110"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-400 hover:text-emerald-300 underline mt-0.5 inline-block font-mono text-xs font-bold"
+                  >
+                    +213 776 665 110 (Contact sur WhatsApp)
+                  </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-xs uppercase tracking-wider">Working Hours</h4>
-                  <p className="text-slate-300 mt-0.5">Sun – Thu: 08:30 AM – 05:30 PM</p>
+                  <h4 className="font-bold text-white text-xs uppercase tracking-wider">Support Availability</h4>
+                  <p className="text-emerald-400 font-semibold mt-0.5">24/7 Active Support</p>
                 </div>
               </div>
             </div>
