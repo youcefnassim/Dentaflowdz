@@ -103,7 +103,7 @@ export default function FloatingWidgets() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-22 right-6 z-50 w-full max-w-sm bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
+            className="fixed bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:max-w-sm z-50 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
           >
             {/* Modal Header */}
             <div className="bg-slate-900 text-white p-5 relative">
