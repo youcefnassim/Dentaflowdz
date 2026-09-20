@@ -25,6 +25,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import Exocad3DViewer from "./Exocad3DViewer";
 
 export default function DashboardPreview() {
   const [activeTab, setActiveTab] = useState<"dashboard" | "patients" | "chart" | "appointments" | "billing">("dashboard");
@@ -319,41 +320,26 @@ export default function DashboardPreview() {
                 </div>
 
                 {/* Interactive Odontogram Quick Card */}
-                <div className="lg:col-span-5 bg-slate-950/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                        <Stethoscope className="w-4 h-4 text-cyan-400" /> Odontogram FDI Chart
-                      </h4>
-                      <span className="text-[10px] text-cyan-300 bg-cyan-950 px-2 py-0.5 rounded-full border border-cyan-800 font-mono">
-                        Tooth #14
-                      </span>
-                    </div>
-                    <p className="text-xs text-slate-400">
-                      Quick clinical condition record for Karim Benali.
-                    </p>
-
-                    <div className="mt-3 p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
-                      <div className="flex justify-between text-slate-300">
-                        <span className="text-slate-500">Diagnosis:</span>
-                        <span className="font-bold text-amber-400">Deep Occlusal Caries</span>
-                      </div>
-                      <div className="flex justify-between text-slate-300">
-                        <span className="text-slate-500">Procedure:</span>
-                        <span className="font-semibold text-slate-200">Composite Restoration</span>
-                      </div>
-                      <div className="flex justify-between text-slate-300">
-                        <span className="text-slate-500">Status:</span>
-                        <span className="text-emerald-400 font-semibold">Scheduled Today</span>
-                      </div>
-                    </div>
+                <div className="lg:col-span-5 bg-slate-950/80 p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3">
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                      <Stethoscope className="w-4 h-4 text-cyan-400" /> 3D Dental CAD & Odontogram
+                    </h4>
+                    <span className="text-[10px] text-cyan-300 bg-cyan-950 px-2 py-0.5 rounded-full border border-cyan-800 font-mono">
+                      Exocad CAD Mode
+                    </span>
                   </div>
+
+                  <Exocad3DViewer
+                    selectedTooth={selectedTooth || 14}
+                    onSelectTooth={(t) => setSelectedTooth(t)}
+                  />
 
                   <button
                     onClick={() => setActiveTab("chart")}
                     className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-cyan-300 border border-slate-700 flex items-center justify-center gap-1.5 transition-colors"
                   >
-                    <span>Open Full Interactive FDI Chart</span>
+                    <span>Open Full Exocad 3D Dental Viewer</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -441,75 +427,10 @@ export default function DashboardPreview() {
                 <span className="text-xs text-cyan-400 font-mono font-bold">Karim Benali (#PAT-0842)</span>
               </div>
 
-              <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4 text-center">
-                <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Upper Arch (Maxillary)</div>
-                <div className="flex justify-center gap-1.5 flex-wrap">
-                  {upperTeethRight.map((t) => (
-                    <button
-                      key={t}
-                      onClick={() => setSelectedTooth(t)}
-                      className={`w-9 h-11 rounded-xl text-xs font-mono font-bold border transition-all flex flex-col items-center justify-center ${
-                        selectedTooth === t
-                          ? "bg-blue-600 text-white border-blue-400 shadow-md shadow-blue-500/30 scale-105"
-                          : t === 14
-                          ? "bg-amber-950 text-amber-300 border-amber-700"
-                          : "bg-slate-900 text-slate-300 border-slate-800 hover:bg-slate-800"
-                      }`}
-                    >
-                      <span className="text-[9px] text-slate-400">T</span>
-                      {t}
-                    </button>
-                  ))}
-                  <div className="w-4" />
-                  {upperTeethLeft.map((t) => (
-                    <button
-                      key={t}
-                      onClick={() => setSelectedTooth(t)}
-                      className={`w-9 h-11 rounded-xl text-xs font-mono font-bold border transition-all flex flex-col items-center justify-center ${
-                        selectedTooth === t
-                          ? "bg-blue-600 text-white border-blue-400 shadow-md shadow-blue-500/30 scale-105"
-                          : "bg-slate-900 text-slate-300 border-slate-800 hover:bg-slate-800"
-                      }`}
-                    >
-                      <span className="text-[9px] text-slate-400">T</span>
-                      {t}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="text-xs font-bold text-slate-400 uppercase tracking-widest pt-3">Lower Arch (Mandibular)</div>
-                <div className="flex justify-center gap-1.5 flex-wrap">
-                  {lowerTeethRight.map((t) => (
-                    <button
-                      key={t}
-                      onClick={() => setSelectedTooth(t)}
-                      className={`w-9 h-11 rounded-xl text-xs font-mono font-bold border transition-all flex flex-col items-center justify-center ${
-                        selectedTooth === t
-                          ? "bg-blue-600 text-white border-blue-400 shadow-md shadow-blue-500/30 scale-105"
-                          : "bg-slate-900 text-slate-300 border-slate-800 hover:bg-slate-800"
-                      }`}
-                    >
-                      <span className="text-[9px] text-slate-400">T</span>
-                      {t}
-                    </button>
-                  ))}
-                  <div className="w-4" />
-                  {lowerTeethLeft.map((t) => (
-                    <button
-                      key={t}
-                      onClick={() => setSelectedTooth(t)}
-                      className={`w-9 h-11 rounded-xl text-xs font-mono font-bold border transition-all flex flex-col items-center justify-center ${
-                        selectedTooth === t
-                          ? "bg-blue-600 text-white border-blue-400 shadow-md shadow-blue-500/30 scale-105"
-                          : "bg-slate-900 text-slate-300 border-slate-800 hover:bg-slate-800"
-                      }`}
-                    >
-                      <span className="text-[9px] text-slate-400">T</span>
-                      {t}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <Exocad3DViewer
+                selectedTooth={selectedTooth || 14}
+                onSelectTooth={(t) => setSelectedTooth(t)}
+              />
 
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
                 <div>

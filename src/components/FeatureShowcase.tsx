@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Exocad3DViewer from "./Exocad3DViewer";
 
 export default function FeatureShowcase() {
   return (
@@ -223,38 +224,9 @@ export default function FeatureShowcase() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-7 bg-slate-900 rounded-2xl p-4 sm:p-6 shadow-2xl border border-slate-800 text-slate-100"
+            className="lg:col-span-7"
           >
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-              <div className="flex items-center gap-2">
-                <Stethoscope className="w-5 h-5 text-teal-400" />
-                <span className="text-sm font-bold text-white">FDI Odontogram & Dental Chart</span>
-              </div>
-              <span className="text-xs text-teal-300 font-mono">Tooth #14 Selected</span>
-            </div>
-
-            <div className="mt-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-center space-y-3">
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
-                Upper Maxillary Arch Preview
-              </span>
-              <div className="flex justify-center gap-2 flex-wrap">
-                {[18, 17, 16, 15, 14, 13, 12, 11].map((tooth) => (
-                  <div
-                    key={tooth}
-                    className={`w-9 h-10 rounded-lg text-xs font-mono font-bold flex items-center justify-center border ${
-                      tooth === 14
-                        ? "bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-md shadow-amber-500/20"
-                        : "bg-slate-800 text-slate-300 border-slate-700"
-                    }`}
-                  >
-                    #{tooth}
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-slate-400 pt-2">
-                Click any tooth to record surface conditions, crowns, fillings or root treatments.
-              </p>
-            </div>
+            <Exocad3DViewer selectedTooth={14} />
           </motion.div>
 
           {/* Right Description */}
