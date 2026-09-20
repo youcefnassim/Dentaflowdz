@@ -44,7 +44,7 @@ export default function FloatingWidgets() {
   return (
     <>
       {/* Fixed Action Floating Buttons Container (Bottom-Right) */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 select-none">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 select-none">
         {/* Support Button */}
         <motion.button
           initial={{ opacity: 0, scale: 0.8 }}

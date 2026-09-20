@@ -24,10 +24,10 @@ export default function Logo({ className = "", iconOnly = false, dark = false }:
 
       {!iconOnly && (
         <div className="flex flex-col">
-          <span className={`text-xl font-bold tracking-tight transition-colors ${dark ? "text-white" : "text-slate-900"}`}>
+          <span className={`text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap transition-colors ${dark ? "text-white" : "text-slate-900"}`}>
             Denta<span className="text-blue-600">Flow</span>
           </span>
-          <span className="text-[10px] uppercase font-bold tracking-wider text-blue-600 dark:text-cyan-400 -mt-1">
+          <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-blue-600 dark:text-cyan-400 -mt-1 whitespace-nowrap hidden min-[360px]:inline-block">
             Smart Clinic Management
           </span>
         </div>
