@@ -52,15 +52,22 @@ export default function ContactPage() {
 
     setIsSubmitting(true);
 
-    const message = `Bonjour DentaFlow ! Demande de démonstration depuis la page Contact.%0A%0A👤 *Nom:* ${encodeURIComponent(formData.fullName)}%0A🏥 *Cabinet:* ${encodeURIComponent(formData.clinicName)}%0A📞 *Tél:* ${encodeURIComponent(formData.phone)}%0A✉️ *Email:* ${encodeURIComponent(formData.email)}%0A🌍 *Pays:* ${encodeURIComponent(formData.country)}%0A👥 *Praticiens:* ${encodeURIComponent(formData.practitioners)}%0A💬 *Message:* ${encodeURIComponent(formData.message || "Aucun message spécifique")}`;
+    const text = `Bonjour DentaFlow ! Demande de démonstration depuis la page Contact.
 
-    const whatsappUrl = `https://wa.me/213776665110?text=${message}`;
+👤 Nom: ${formData.fullName}
+🏥 Cabinet: ${formData.clinicName}
+📞 Tél: ${formData.phone}
+✉️ Email: ${formData.email}
+🌍 Pays: ${formData.country}
+👥 Praticiens: ${formData.practitioners}
+💬 Message: ${formData.message || "Aucun message spécifique"}`;
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      window.open(whatsappUrl, "_blank");
-    }, 600);
+    const whatsappUrl = `https://wa.me/213776665110?text=${encodeURIComponent(text)}`;
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+
+    window.location.href = whatsappUrl;
   };
 
   return (

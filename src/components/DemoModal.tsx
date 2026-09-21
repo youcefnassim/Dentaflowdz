@@ -60,18 +60,22 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setIsSubmitting(true);
 
-    const message = `Bonjour DentaFlow ! Je souhaite recevoir une démonstration du logiciel.%0A%0A👤 *Praticien / Nom:* ${encodeURIComponent(formData.name)}%0A📞 *Téléphone:* ${encodeURIComponent(formData.phone)}%0A✉️ *Email:* ${encodeURIComponent(formData.email)}%0A📍 *Wilaya:* ${encodeURIComponent(formData.wilaya || "Non spécifiée")}%0A🏥 *Cabinet:* ${encodeURIComponent(formData.cabinetType)} (${encodeURIComponent(formData.practitioners)})`;
+    const text = `Bonjour DentaFlow ! Je souhaite recevoir une démonstration du logiciel.
 
-    const whatsappUrl = `https://wa.me/213776665110?text=${message}`;
+👤 Praticien / Nom: ${formData.name}
+📞 Téléphone: ${formData.phone}
+✉️ Email: ${formData.email}
+📍 Wilaya: ${formData.wilaya || "Non spécifiée"}
+🏥 Cabinet: ${formData.cabinetType} (${formData.practitioners})`;
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      // Automatically redirect to WhatsApp in a new tab for instant notification
-      window.open(whatsappUrl, "_blank");
-    }, 600);
+    const whatsappUrl = `https://wa.me/213776665110?text=${encodeURIComponent(text)}`;
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+
+    // Direct synchronous navigation (bypasses popup blockers on Android & iOS Chrome/Safari)
+    window.location.href = whatsappUrl;
   };
 
   const resetForm = () => {
@@ -89,6 +93,13 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   };
 
   if (!isOpen) return null;
+
+  const currentWhatsappText = `Bonjour DentaFlow ! Je souhaite recevoir une démonstration.
+👤 Nom: ${formData.name}
+📞 Tél: ${formData.phone}
+✉️ Email: ${formData.email}
+📍 Wilaya: ${formData.wilaya || "Non spécifiée"}`;
+  const currentWhatsappUrl = `https://wa.me/213776665110?text=${encodeURIComponent(currentWhatsappText)}`;
 
   return (
     <AnimatePresence>
@@ -127,18 +138,16 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h4 className="text-xl font-bold text-slate-900">Demande envoyée avec succès</h4>
+                <h4 className="text-xl font-bold text-slate-900">Demande enregistrée</h4>
                 <p className="text-slate-600 text-sm leading-relaxed max-w-md mx-auto">
-                  {t("form_success_msg")}
+                  Si l'application WhatsApp ne s'est pas ouverte automatiquement sur votre appareil, cliquez ci-dessous pour envoyer votre message :
                 </p>
                 <div className="pt-2 flex flex-col gap-3">
                   <a
-                    href={`https://wa.me/213776665110?text=Bonjour%20DentaFlow,%20demande%20de%20d%C3%A9mo%20de%20${encodeURIComponent(formData.name)}%20(T%C3%A9l:%20${encodeURIComponent(formData.phone)})`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={currentWhatsappUrl}
                     className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2"
                   >
-                    <span>📲 Relancer sur WhatsApp (+213 776 665 110)</span>
+                    <span>📲 Ouvrir WhatsApp (+213 776 665 110)</span>
                   </a>
                   <button
                     onClick={resetForm}
