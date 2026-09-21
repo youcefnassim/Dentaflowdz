@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWidgets from "@/components/FloatingWidgets";
+import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,37 +15,37 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "DentaFlow — Dental Practice Management Software",
+    default: "DentaFlow — Logiciel de gestion pour cabinet dentaire",
     template: "%s | DentaFlow",
   },
   description:
-    "DentaFlow is modern dental practice management software designed for managing patients, appointments, clinical records, dental charts, treatment plans, and billing in one fast, offline-first desktop platform.",
+    "DentaFlow simplifie la gestion des cabinets dentaires : patients, rendez-vous, odontogrammes, traitements, facturation et statistiques, même hors ligne.",
   keywords: [
-    "dental software",
-    "dental practice management",
-    "odontogram chart",
-    "dental records software",
-    "clinic management system",
-    "offline dental software",
-    "electron dental app",
-    "dentist clinic software",
+    "DentaFlow",
+    "logiciel cabinet dentaire",
+    "gestion dentaire",
+    "odontogramme numérique",
+    "dossier patient dentiste",
+    "logiciel dentaire hors ligne",
+    "facturation cabinet dentaire",
+    "agenda dentiste",
   ],
-  authors: [{ name: "DentaFlow Technologies" }],
+  authors: [{ name: "DentaFlow" }],
   creator: "DentaFlow",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://dentaflow.app",
-    title: "DentaFlow — Dental Practice Management Software",
+    locale: "fr_FR",
+    url: "https://dentaflowdz.vercel.app",
+    title: "DentaFlow — Logiciel de gestion pour cabinet dentaire",
     description:
-      "DentaFlow brings patients, appointments, treatments, dental charts, records and billing together in one powerful dental management platform.",
+      "DentaFlow simplifie la gestion des cabinets dentaires : patients, rendez-vous, odontogrammes, traitements, facturation et statistiques, même hors ligne.",
     siteName: "DentaFlow",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DentaFlow — Dental Practice Management Software",
+    title: "DentaFlow — Logiciel de gestion pour cabinet dentaire",
     description:
-      "DentaFlow brings patients, appointments, treatments, clinical records and billing together in one powerful dental management platform.",
+      "DentaFlow simplifie la gestion des cabinets dentaires : patients, rendez-vous, odontogrammes, traitements, facturation et statistiques, même hors ligne.",
   },
   robots: {
     index: true,
@@ -51,17 +53,14 @@ export const metadata: Metadata = {
   },
 };
 
-import { LanguageProvider } from "@/context/LanguageContext";
-import { ThemeProvider } from "@/context/ThemeContext";
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} h-full antialiased dark`}>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300">
+    <html lang="fr" className={`${inter.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-white text-slate-900 font-sans">
         <ThemeProvider>
           <LanguageProvider>
             <Navbar />
@@ -74,3 +73,4 @@ export default function RootLayout({
     </html>
   );
 }
+

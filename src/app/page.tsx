@@ -1,34 +1,35 @@
 import React from "react";
 import Hero from "@/components/Hero";
-import TrustStrip from "@/components/TrustStrip";
-import WhyDentaFlow from "@/components/WhyDentaFlow";
+import ProblemSection from "@/components/ProblemSection";
+import SolutionWorkflow from "@/components/SolutionWorkflow";
 import FeatureShowcase from "@/components/FeatureShowcase";
-import Gallery from "@/components/Gallery";
-import AboutFounder from "@/components/AboutFounder";
+import VideoDemoSection from "@/components/VideoDemoSection";
 import OfflineFirstSection from "@/components/OfflineFirstSection";
 import SecuritySection from "@/components/SecuritySection";
-import TechStack from "@/components/TechStack";
-import HowItWorks from "@/components/HowItWorks";
-import Testimonials from "@/components/Testimonials";
+import BeforeAfterSection from "@/components/BeforeAfterSection";
+import TargetAudienceSection from "@/components/TargetAudienceSection";
+import PricingSection from "@/components/PricingSection";
+import EarlyAccessSection from "@/components/EarlyAccessSection";
 import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA";
+import TechStack from "@/components/TechStack";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Hero />
-      <TrustStrip />
-      <WhyDentaFlow />
+      <ProblemSection />
+      <SolutionWorkflow />
       <FeatureShowcase />
-      <Gallery />
-      <AboutFounder />
+      <VideoDemoSection />
       <OfflineFirstSection />
       <SecuritySection />
-      <TechStack />
-      <HowItWorks />
-      <Testimonials />
+      <BeforeAfterSection />
+      <TargetAudienceSection />
+      <PricingSection />
+      <EarlyAccessSection />
       <FAQ />
-      <CTA />
+      <TechStack />
     </div>
   );
 }
+

@@ -1,35 +1,42 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Sparkles, Shield, ChevronRight, Play, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ChevronRight, Users, Calendar, Activity, ClipboardList, CreditCard, ShieldCheck, WifiOff } from "lucide-react";
 import { motion } from "framer-motion";
 import DashboardPreview from "./DashboardPreview";
 import DemoModal from "./DemoModal";
+import Exocad3DViewer from "./Exocad3DViewer";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const { t } = useLanguage();
 
+  const microBadges = [
+    { icon: Users, label: "Patients", color: "bg-blue-500/20 text-blue-300 border-blue-500/30" },
+    { icon: Calendar, label: "Agenda", color: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30" },
+    { icon: Activity, label: "Odontogramme", color: "bg-teal-500/20 text-teal-300 border-teal-500/30" },
+    { icon: ClipboardList, label: "Traitements", color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
+    { icon: CreditCard, label: "Facturation", color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30" },
+  ];
+
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white">
-      {/* Background Subtle Tech Grid & Ambient Glows */}
-      <div className="absolute inset-0 bg-dark-grid opacity-30 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative pt-32 pb-20 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white" id="hero">
+      {/* Background Subtle Ambient Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-6">
+        <div className="text-center max-w-4xl mx-auto space-y-6">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 text-cyan-400 text-xs sm:text-sm font-medium border border-cyan-500/20 shadow-xs"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 text-cyan-300 text-xs sm:text-sm font-semibold border border-cyan-500/20 shadow-xs"
           >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span>{t("hero_badge")}</span>
+            <ShieldCheck className="w-4 h-4 text-cyan-400" />
+            <span>Logiciel professionnel pour cabinets dentaires</span>
           </motion.div>
 
           {/* Headline */}
@@ -39,23 +46,20 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]"
           >
-            {t("hero_title_1")}{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
-              {t("hero_title_2")}
-            </span>
+            {t("hero_title")}
           </motion.h1>
 
-          {/* Supporting Copy */}
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-slate-300 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto font-normal"
+            className="text-slate-300 text-base sm:text-xl leading-relaxed max-w-3xl mx-auto font-medium"
           >
-            {t("hero_desc")}
+            {t("hero_subtitle")}
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,32 +68,50 @@ export default function Hero() {
           >
             <button
               onClick={() => setIsDemoModalOpen(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-base transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-base transition-all shadow-xl shadow-blue-600/30 hover:scale-105 active:scale-95"
             >
               <span>{t("hero_cta_demo")}</span>
               <ArrowRight className="w-5 h-5" />
             </button>
 
-            <Link
-              href="/product"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 hover:text-white font-semibold text-base border border-slate-700/80 transition-all hover:-translate-y-0.5"
+            <a
+              href="#product"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 hover:text-white font-bold text-base border border-slate-700 transition-all hover:scale-105"
             >
               <span>{t("hero_cta_explore")}</span>
               <ChevronRight className="w-5 h-5 text-slate-400" />
-            </Link>
+            </a>
           </motion.div>
 
-          {/* Small Trust Text */}
+          {/* Trust strip */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="pt-1 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-400 flex-wrap"
+            className="pt-2 inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-extrabold text-cyan-300 bg-slate-800/60 px-5 py-2 rounded-full border border-slate-700/80"
           >
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>{t("hero_trust_1")}</span>
-            <span className="text-slate-600">•</span>
-            <span>{t("hero_trust_2")}</span>
+            <span>{t("hero_trust_strip")}</span>
+          </motion.div>
+
+          {/* Micro visual badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="pt-4 flex flex-wrap items-center justify-center gap-2.5"
+          >
+            {microBadges.map((badge, idx) => {
+              const Icon = badge.icon;
+              return (
+                <div
+                  key={idx}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold border ${badge.color}`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  <span>{badge.label}</span>
+                </div>
+              );
+            })}
           </motion.div>
         </div>
 
@@ -99,6 +121,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
           className="mt-12 sm:mt-16 relative"
+          id="product"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl blur-2xl opacity-20" />
           <DashboardPreview />
@@ -110,3 +133,4 @@ export default function Hero() {
     </section>
   );
 }
+

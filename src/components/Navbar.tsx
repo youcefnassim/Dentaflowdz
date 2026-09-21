@@ -13,15 +13,12 @@ import {
   ShieldCheck,
   CreditCard,
   HelpCircle,
-  PhoneCall,
-  Sparkles
+  Globe
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import DemoModal from "./DemoModal";
 import { useLanguage } from "@/context/LanguageContext";
-import { useTheme } from "@/context/ThemeContext";
-import { Globe, Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,7 +26,6 @@ export default function Navbar() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const pathname = usePathname();
   const { language, toggleLanguage, t } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +39,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -56,11 +51,11 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: t("nav_product"), href: "/product", icon: LayoutDashboard },
-    { name: t("nav_features"), href: "/features", icon: Layers },
-    { name: t("nav_security"), href: "/security", icon: ShieldCheck },
-    { name: t("nav_pricing"), href: "/pricing", icon: CreditCard },
-    { name: t("nav_faq"), href: "/faq", icon: HelpCircle },
+    { name: t("nav_product"), href: "#product", icon: LayoutDashboard },
+    { name: t("nav_features"), href: "#features", icon: Layers },
+    { name: t("nav_security"), href: "#security", icon: ShieldCheck },
+    { name: t("nav_pricing"), href: "#pricing", icon: CreditCard },
+    { name: t("nav_faq"), href: "#faq", icon: HelpCircle },
   ];
 
   return (
@@ -68,49 +63,61 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? theme === "dark"
-              ? "bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 shadow-md py-3"
-              : "bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-xs py-3"
-            : "bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 py-4"
+            ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-sm py-3"
+            : "bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 py-4 text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
-          <Logo dark={!scrolled || theme === "dark"} />
+          <Logo dark={!scrolled} />
 
           {/* Desktop Nav Items */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-200/60 p-1.5 rounded-full border border-slate-300/50 backdrop-blur-md">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                    isActive
-                      ? "bg-white text-blue-600 shadow-xs font-semibold"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
+          <nav className={`hidden md:flex items-center gap-1 p-1.5 rounded-full border ${
+            scrolled ? "bg-slate-100/80 border-slate-200" : "bg-slate-800/60 border-slate-700/60"
+          }`}>
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                  scrolled
+                    ? "text-slate-700 hover:text-blue-600 hover:bg-white shadow-xs"
+                    : "text-slate-200 hover:text-white hover:bg-slate-700/80"
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
 
           {/* Desktop CTA buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-blue-600 px-3 py-2 rounded-lg hover:bg-slate-100 transition-colors"
+            <button
+              onClick={toggleLanguage}
+              className={`p-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors border ${
+                scrolled
+                  ? "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"
+                  : "bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700"
+              }`}
             >
-              <Monitor className="w-3.5 h-3.5" />
-              <span>{t("nav_contact")}</span>
-            </Link>
+              <Globe className="w-4 h-4 text-blue-500" />
+              <span>{t("lang_code")}</span>
+            </button>
+
+            <a
+              href="#product"
+              className={`px-4 py-2 rounded-xl font-bold text-sm transition-all border ${
+                scrolled
+                  ? "border-slate-300 text-slate-800 hover:bg-slate-100"
+                  : "border-slate-700 text-white hover:bg-slate-800"
+              }`}
+            >
+              {t("nav_product_btn")}
+            </a>
 
             <button
               onClick={() => setIsDemoModalOpen(true)}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-all shadow-sm shadow-blue-600/20 active:scale-98"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-sm transition-all shadow-md shadow-blue-500/20 active:scale-95"
             >
               <span>{t("nav_demo_btn")}</span>
               <ArrowRight className="w-4 h-4" />
@@ -121,14 +128,17 @@ export default function Navbar() {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setIsDemoModalOpen(true)}
-              className="px-3.5 py-1.5 text-xs rounded-xl bg-blue-600 text-white font-semibold shadow-sm flex items-center gap-1"
+              className="px-3 py-1.5 text-xs rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold shadow-xs"
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Demo</span>
+              Démo
             </button>
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 transition-colors border border-slate-300/60"
+              className={`p-2 rounded-xl transition-colors border ${
+                scrolled
+                  ? "text-slate-800 border-slate-300 bg-slate-100"
+                  : "text-white border-slate-700 bg-slate-800"
+              }`}
               aria-label="Open mobile menu"
             >
               <Menu className="w-6 h-6" />
@@ -137,21 +147,18 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Premium Full-Overlay Mobile Navigation Drawer */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <div className="fixed inset-0 z-50 md:hidden flex justify-end">
-            {/* Backdrop Blur Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
               className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
             />
 
-            {/* Slide-over Dark Navy Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -159,111 +166,62 @@ export default function Navbar() {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="relative w-full max-w-sm bg-slate-900 text-white h-full shadow-2xl flex flex-col justify-between p-6 z-10 border-l border-slate-800"
             >
-              {/* Drawer Top Header */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-slate-800">
                   <Logo dark />
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors border border-slate-800"
-                    aria-label="Close mobile menu"
+                    className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                {/* Nav Links List */}
-                <div className="space-y-1.5">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 px-3">
-                    Navigation Menu
-                  </span>
-
+                <div className="space-y-2">
                   {navLinks.map((link) => {
                     const Icon = link.icon;
-                    const isActive = pathname === link.href;
                     return (
-                      <Link
+                      <a
                         key={link.name}
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all ${
-                          isActive
-                            ? "bg-blue-600 text-white font-bold shadow-md shadow-blue-600/30"
-                            : "text-slate-300 hover:text-white hover:bg-slate-800/80"
-                        }`}
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:text-white hover:bg-slate-800 transition-all"
                       >
-                        <div className="flex items-center gap-3">
-                          <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-cyan-400"}`} />
-                          <span>{link.name}</span>
-                        </div>
-                        {isActive && <span className="w-2 h-2 rounded-full bg-cyan-400" />}
-                      </Link>
+                        <Icon className="w-5 h-5 text-cyan-400" />
+                        <span>{link.name}</span>
+                      </a>
                     );
                   })}
                 </div>
               </div>
 
-                {/* Drawer Bottom Actions: Language & Theme Controls + CTA */}
-                <div className="space-y-3 pt-6 border-t border-slate-800">
-                  {/* Sidebar Language & Theme Controls Row */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={toggleLanguage}
-                      className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 transition-all active:scale-95"
-                    >
-                      <Globe className="w-4 h-4 text-blue-400" />
-                      <span>{language === "fr" ? "🇫🇷 Français" : "🇬🇧 English"}</span>
-                    </button>
+              <div className="space-y-3 pt-6 border-t border-slate-800">
+                <button
+                  onClick={toggleLanguage}
+                  className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-slate-800 text-white font-bold text-xs border border-slate-700"
+                >
+                  <Globe className="w-4 h-4 text-cyan-400" />
+                  <span>{t("lang_name")} ({t("lang_code")})</span>
+                </button>
 
-                    <button
-                      onClick={toggleTheme}
-                      className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 transition-all active:scale-95"
-                    >
-                      {theme === "dark" ? (
-                        <>
-                          <Moon className="w-4 h-4 text-cyan-400" />
-                          <span>Mode Sombre</span>
-                        </>
-                      ) : (
-                        <>
-                          <Sun className="w-4 h-4 text-amber-400" />
-                          <span>Mode Clair</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setIsDemoModalOpen(true);
-                    }}
-                    className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30"
-                  >
-                    <span>{t("nav_demo_btn")}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-sm transition-all"
-                  >
-                    <PhoneCall className="w-4 h-4 text-cyan-400" />
-                    <span>{t("nav_contact")}</span>
-                  </Link>
-
-                  <p className="text-[11px] text-center text-slate-500 pt-2 font-mono">
-                    DentaFlow Desktop v2.4 • Offline-First
-                  </p>
-                </div>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setIsDemoModalOpen(true);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-sm shadow-lg"
+                >
+                  <span>{t("nav_demo_btn")}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      {/* Global Demo Request Modal */}
       <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
     </>
   );
 }
+

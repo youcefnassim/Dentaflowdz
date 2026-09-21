@@ -1,125 +1,75 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
 import Logo from "./Logo";
-import { Monitor, Shield, ArrowUpRight } from "lucide-react";
+import { Linkedin, Instagram, Youtube, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* Col 1: Brand */}
-          <div className="lg:col-span-2 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Col 1: Brand & Tagline */}
+          <div className="md:col-span-2 space-y-4">
             <Logo dark />
-            <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
-              Modern software for modern dental practices. Centralize patient management, appointments, odontograms, clinical records, and billing in one offline-first desktop platform.
+            <p className="text-slate-300 text-sm max-w-sm leading-relaxed font-medium">
+              {t("footer_desc")}
             </p>
-            <div className="flex items-center gap-3 pt-2 text-xs font-mono text-slate-500">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" /> Desktop Architecture
-              </span>
-              <span>•</span>
-              <span>Electron + React + SQLite</span>
+            <div className="pt-2 text-xs font-mono text-cyan-400">
+              dentaflowdz.vercel.app
             </div>
           </div>
 
-          {/* Col 2: Product */}
+          {/* Col 2: Navigation Links */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Product</h4>
-            <ul className="space-y-2.5">
-              <li>
-                <Link href="/product" className="hover:text-white transition-colors">
-                  Product Overview
-                </Link>
-              </li>
-              <li>
-                <Link href="/features" className="hover:text-white transition-colors">
-                  All Features
-                </Link>
-              </li>
-              <li>
-                <Link href="/security" className="hover:text-white transition-colors">
-                  Security & Data Architecture
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="hover:text-white transition-colors">
-                  Pricing Plans
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Request a Demo
-                </Link>
-              </li>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Menu</h4>
+            <ul className="space-y-2.5 text-sm font-medium">
+              <li><a href="#product" className="hover:text-cyan-300 transition-colors">{t("nav_product")}</a></li>
+              <li><a href="#features" className="hover:text-cyan-300 transition-colors">{t("nav_features")}</a></li>
+              <li><a href="#security" className="hover:text-cyan-300 transition-colors">{t("nav_security")}</a></li>
+              <li><a href="#pricing" className="hover:text-cyan-300 transition-colors">{t("nav_pricing")}</a></li>
+              <li><a href="#faq" className="hover:text-cyan-300 transition-colors">{t("nav_faq")}</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Resources & Support */}
+          {/* Col 3: Social Networks */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Resources</h4>
-            <ul className="space-y-2.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Réseaux sociaux</h4>
+            <ul className="space-y-2.5 text-sm font-medium">
               <li>
-                <Link href="/faq" className="hover:text-white transition-colors">
-                  FAQ Accordion
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-white transition-colors">
-                  Documentation & Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Clinic Support Team
-                </Link>
-              </li>
-              <li>
-                <Link href="/security" className="hover:text-white transition-colors">
-                  Offline System Requirements
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Legal & Social */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Legal & Social</h4>
-            <ul className="space-y-2.5">
-              <li>
-                <Link href="/security" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/security" className="hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-              <li className="pt-2 flex items-center gap-3">
                 <a
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white transition-colors text-xs font-semibold"
+                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
                 >
-                  LinkedIn
+                  <Linkedin className="w-4 h-4 text-cyan-400" />
+                  <span>LinkedIn</span>
                 </a>
+              </li>
+              <li>
                 <a
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white transition-colors text-xs font-semibold"
+                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
                 >
-                  Instagram
+                  <Instagram className="w-4 h-4 text-cyan-400" />
+                  <span>Instagram</span>
                 </a>
+              </li>
+              <li>
                 <a
-                  href="https://facebook.com"
+                  href="https://youtube.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white transition-colors text-xs font-semibold"
+                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
                 >
-                  Facebook
+                  <Youtube className="w-4 h-4 text-cyan-400" />
+                  <span>YouTube</span>
                 </a>
               </li>
             </ul>
@@ -127,13 +77,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 DentaFlow. All rights reserved.</p>
-          <p className="flex items-center gap-1 text-slate-400">
-            <Shield className="w-3.5 h-3.5 text-blue-400" /> Designed for modern dental practices
-          </p>
+        <div className="mt-12 pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
+          <p>{t("footer_rights")}</p>
+          <p>made by DentaFlow</p>
         </div>
       </div>
     </footer>
   );
 }
+
