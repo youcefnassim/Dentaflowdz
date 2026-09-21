@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { UserCheck, Stethoscope, Activity, ClipboardList, Calendar, CreditCard, Award, ChevronRight } from 'lucide-react';
+import { UserCheck, Stethoscope, Activity, ClipboardList, Calendar, CreditCard, Award, ArrowRight } from 'lucide-react';
 
 export default function SolutionWorkflow() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const steps = [
     { icon: UserCheck, title: t('step_1_title'), desc: t('step_1_desc'), color: 'from-blue-500 to-blue-600' },
@@ -17,10 +19,36 @@ export default function SolutionWorkflow() {
     { icon: Award, title: t('step_7_title'), desc: t('step_7_desc'), color: 'from-cyan-600 to-blue-600' },
   ];
 
+  // Tripled steps array for continuous seamless infinite auto-scrolling loop
+  const displaySteps = [...steps, ...steps, ...steps];
+
+  // Auto-scroll loop
+  useEffect(() => {
+    if (isPaused || !scrollRef.current) return;
+
+    const container = scrollRef.current;
+    let animationFrameId: number;
+
+    const scroll = () => {
+      if (!container) return;
+      container.scrollLeft += 1.2;
+
+      // Loop back smoothly when reaching one third of total scroll width
+      if (container.scrollLeft >= container.scrollWidth / 3) {
+        container.scrollLeft = 0;
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused, language]);
+
   return (
     <section className="py-20 bg-white relative overflow-hidden" id="solution">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 mb-4">
             Parcours complet
           </span>
@@ -31,22 +59,30 @@ export default function SolutionWorkflow() {
             {t('solution_subtitle')}
           </p>
         </div>
+      </div>
 
-        {/* Workflow Grid / Pipeline */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {steps.map((step, idx) => {
-            const Icon = step.icon;
-            return (
+      {/* Full-width Single Horizontal Auto-Moving Track */}
+      <div
+        ref={scrollRef}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="flex gap-6 overflow-x-auto scrollbar-none py-6 px-4 select-none scroll-smooth cursor-grab active:cursor-grabbing max-w-full"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {displaySteps.map((step, idx) => {
+          const Icon = step.icon;
+          const stepNumber = (idx % steps.length) + 1;
+          return (
+            <div key={idx} className="flex items-center gap-6 shrink-0">
               <div
-                key={idx}
-                className="group relative bg-slate-50/80 p-6 rounded-2xl border border-slate-200/80 hover:border-blue-400 hover:bg-white hover:shadow-xl transition-all duration-300"
+                className="w-[280px] sm:w-[320px] shrink-0 bg-slate-50 p-6 rounded-2xl border border-slate-200/90 hover:border-blue-500 hover:bg-white hover:shadow-xl transition-all duration-300 group"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`p-3.5 rounded-xl bg-gradient-to-br ${step.color} text-white shadow-md shadow-blue-500/10`}>
+                  <div className={`p-3.5 rounded-xl bg-gradient-to-br ${step.color} text-white shadow-md group-hover:scale-110 transition-transform`}>
                     <Icon className="w-6 h-6" />
                   </div>
                   <span className="text-xs font-extrabold text-slate-400 group-hover:text-blue-600 transition-colors">
-                    0{idx + 1}
+                    0{stepNumber}
                   </span>
                 </div>
 
@@ -56,15 +92,17 @@ export default function SolutionWorkflow() {
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {step.desc}
                 </p>
-
-                {idx < steps.length - 1 && (
-                  <ChevronRight className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-slate-300 w-6 h-6 z-20 pointer-events-none group-hover:text-blue-500 transition-colors" />
-                )}
               </div>
-            );
-          })}
-        </div>
+
+              {/* Arrow Connector between steps */}
+              <div className="text-slate-300 shrink-0">
+                <ArrowRight className="w-6 h-6 animate-pulse text-blue-500/60" />
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
 }
+
