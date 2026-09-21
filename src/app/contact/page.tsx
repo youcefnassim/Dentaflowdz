@@ -51,10 +51,16 @@ export default function ContactPage() {
     if (!validate()) return;
 
     setIsSubmitting(true);
+
+    const message = `Bonjour DentaFlow ! Demande de démonstration depuis la page Contact.%0A%0A👤 *Nom:* ${encodeURIComponent(formData.fullName)}%0A🏥 *Cabinet:* ${encodeURIComponent(formData.clinicName)}%0A📞 *Tél:* ${encodeURIComponent(formData.phone)}%0A✉️ *Email:* ${encodeURIComponent(formData.email)}%0A🌍 *Pays:* ${encodeURIComponent(formData.country)}%0A👥 *Praticiens:* ${encodeURIComponent(formData.practitioners)}%0A💬 *Message:* ${encodeURIComponent(formData.message || "Aucun message spécifique")}`;
+
+    const whatsappUrl = `https://wa.me/213776665110?text=${message}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1200);
+      window.open(whatsappUrl, "_blank");
+    }, 600);
   };
 
   return (

@@ -60,10 +60,18 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setIsSubmitting(true);
+
+    const message = `Bonjour DentaFlow ! Je souhaite recevoir une démonstration du logiciel.%0A%0A👤 *Praticien / Nom:* ${encodeURIComponent(formData.name)}%0A📞 *Téléphone:* ${encodeURIComponent(formData.phone)}%0A✉️ *Email:* ${encodeURIComponent(formData.email)}%0A📍 *Wilaya:* ${encodeURIComponent(formData.wilaya || "Non spécifiée")}%0A🏥 *Cabinet:* ${encodeURIComponent(formData.cabinetType)} (${encodeURIComponent(formData.practitioners)})`;
+
+    const whatsappUrl = `https://wa.me/213776665110?text=${message}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1000);
+      // Automatically redirect to WhatsApp in a new tab for instant notification
+      window.open(whatsappUrl, "_blank");
+    }, 600);
   };
 
   const resetForm = () => {
@@ -115,20 +123,30 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
           {/* Form / Success view */}
           <div className="p-6 sm:p-8 bg-white">
             {isSubmitted ? (
-              <div className="text-center py-6">
-                <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center py-6 space-y-4">
+                <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">Demande envoyée avec succès</h4>
+                <h4 className="text-xl font-bold text-slate-900">Demande envoyée avec succès</h4>
                 <p className="text-slate-600 text-sm leading-relaxed max-w-md mx-auto">
                   {t("form_success_msg")}
                 </p>
-                <button
-                  onClick={resetForm}
-                  className="mt-6 w-full py-3 rounded-xl bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors shadow-md"
-                >
-                  Fermer la fenêtre
-                </button>
+                <div className="pt-2 flex flex-col gap-3">
+                  <a
+                    href={`https://wa.me/213776665110?text=Bonjour%20DentaFlow,%20demande%20de%20d%C3%A9mo%20de%20${encodeURIComponent(formData.name)}%20(T%C3%A9l:%20${encodeURIComponent(formData.phone)})`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2"
+                  >
+                    <span>📲 Relancer sur WhatsApp (+213 776 665 110)</span>
+                  </a>
+                  <button
+                    onClick={resetForm}
+                    className="w-full py-3 rounded-xl bg-slate-100 text-slate-700 font-bold text-sm hover:bg-slate-200 transition-colors border border-slate-200"
+                  >
+                    Fermer la fenêtre
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
