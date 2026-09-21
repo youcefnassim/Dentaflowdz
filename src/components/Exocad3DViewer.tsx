@@ -245,21 +245,6 @@ export default function Exocad3DViewer({
           className="w-full h-full object-contain"
         />
 
-        {/* Status Indicator (Top-Left) */}
-        <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-slate-800 text-[11px] font-mono font-bold text-slate-300 backdrop-blur-md pointer-events-none">
-          {isPaused ? (
-            <>
-              <Pause className="w-3 h-3 text-amber-400" />
-              <span className="text-amber-400">3D Model Paused (Tooth #{activeTooth})</span>
-            </>
-          ) : (
-            <>
-              <Play className="w-3 h-3 text-cyan-400 animate-pulse" />
-              <span className="text-slate-400">Tap tooth to pause / inspect</span>
-            </>
-          )}
-        </div>
-
         {/* Made by DentaFlow Watermark Badge (Bottom-Right) */}
         <div className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-cyan-400 text-xs font-bold shadow-lg backdrop-blur-md pointer-events-none">
           <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
