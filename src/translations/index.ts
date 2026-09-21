@@ -65,6 +65,21 @@ export const translations = {
     feat_8_title: "Fonctionnement hors ligne",
     feat_8_desc: "Continuez à travailler sans aucune interruption même lorsque la connexion Internet est indisponible.",
 
+    // Dashboard Preview Keys
+    dash_greeting: "Bonjour, Dr. Alami 👋",
+    dash_greeting_sub: "Aperçu de l'activité du cabinet dentaire aujourd'hui",
+    dash_stat_patients: "Patients Enregistrés",
+    dash_stat_today_app: "RDV Aujourd'hui",
+    dash_stat_treatments: "Soins Réalisés",
+    dash_stat_revenue: "Chiffre d'Affaires",
+    dash_search_placeholder: "Rechercher un patient par nom, téléphone, n° dossier...",
+    dash_btn_new_app: "Nouveau RDV",
+    dash_tab_dashboard: "Tableau de bord",
+    dash_tab_patients: "Patients",
+    dash_tab_appointments: "Rendez-vous",
+    dash_tab_chart: "Odontogramme 3D",
+    dash_tab_billing: "Facturation",
+
     // Video Section
     video_title: "DentaFlow en 90 secondes",
     video_subtitle: "Découvrez en vidéo la simplicité d'utilisation de DentaFlow dans le quotidien d'un cabinet.",
@@ -272,6 +287,21 @@ export const translations = {
     feat_7_desc: "Protect and back up your practice data locally with complete confidentiality.",
     feat_8_title: "Offline Capability",
     feat_8_desc: "Continue working smoothly without interruptions even when Internet is unavailable.",
+
+    // Dashboard Preview Keys
+    dash_greeting: "Good day, Dr. Alami 👋",
+    dash_greeting_sub: "Overview of today's dental clinic activity",
+    dash_stat_patients: "Registered Patients",
+    dash_stat_today_app: "Appointments Today",
+    dash_stat_treatments: "Treatments Performed",
+    dash_stat_revenue: "Practice Revenue",
+    dash_search_placeholder: "Search patient by name, phone, record ID...",
+    dash_btn_new_app: "New Appointment",
+    dash_tab_dashboard: "Dashboard",
+    dash_tab_patients: "Patients",
+    dash_tab_appointments: "Appointments",
+    dash_tab_chart: "3D Dental Chart",
+    dash_tab_billing: "Billing",
 
     // Video Section
     video_title: "DentaFlow in 90 Seconds",

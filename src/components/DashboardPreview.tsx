@@ -186,76 +186,76 @@ export default function DashboardPreview() {
               </div>
 
               {/* 4 Statistics KPI Cards */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
                 {/* Patients Card */}
-                <div className="bg-slate-950/90 p-3.5 sm:p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 group hover:border-blue-500/50 transition-all">
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                      <Users className="w-4.5 h-4.5" />
+                <div className="bg-slate-950/90 p-3 sm:p-4 rounded-2xl border border-slate-800/90 flex flex-col justify-between space-y-2.5 group hover:border-blue-500/50 transition-all min-w-0">
+                  <div className="flex items-center justify-between gap-1">
+                    <div className="p-2 sm:p-2.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 shrink-0">
+                      <Users className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
-                    <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60 truncate max-w-[100px]">
+                    <span className="text-[9px] sm:text-[10px] text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800/80 whitespace-nowrap shrink-0">
                       0 ce mois-ci
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider leading-none block">
+                    <span className="text-[10px] sm:text-xs font-semibold text-slate-400 leading-tight block truncate">
                       {t("dash_stat_patients")}
                     </span>
-                    <p className="text-2xl sm:text-3xl font-black text-white mt-1">0</p>
+                    <p className="text-xl sm:text-3xl font-black text-white mt-1">0</p>
                   </div>
                 </div>
 
                 {/* Rendez-vous Today Card */}
-                <div className="bg-slate-950/90 p-3.5 sm:p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 group hover:border-cyan-500/50 transition-all">
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                      <CalendarIcon className="w-4.5 h-4.5" />
+                <div className="bg-slate-950/90 p-3 sm:p-4 rounded-2xl border border-slate-800/90 flex flex-col justify-between space-y-2.5 group hover:border-cyan-500/50 transition-all min-w-0">
+                  <div className="flex items-center justify-between gap-1">
+                    <div className="p-2 sm:p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0">
+                      <CalendarIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
-                    <span className="text-[10px] text-cyan-300 font-bold bg-cyan-950/60 px-2 py-0.5 rounded-full border border-cyan-800/60 truncate max-w-[100px]">
+                    <span className="text-[9px] sm:text-[10px] text-cyan-300 font-bold bg-cyan-950/80 px-2 py-0.5 rounded-full border border-cyan-800/80 whitespace-nowrap shrink-0">
                       Aucun RDV
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider leading-none block">
+                    <span className="text-[10px] sm:text-xs font-semibold text-slate-400 leading-tight block truncate">
                       {t("dash_stat_today_app")}
                     </span>
-                    <p className="text-2xl sm:text-3xl font-black text-white mt-1">0</p>
+                    <p className="text-xl sm:text-3xl font-black text-white mt-1">0</p>
                   </div>
                 </div>
 
                 {/* Traitements Card */}
-                <div className="bg-slate-950/90 p-3.5 sm:p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 group hover:border-indigo-500/50 transition-all">
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                      <Activity className="w-4.5 h-4.5" />
+                <div className="bg-slate-950/90 p-3 sm:p-4 rounded-2xl border border-slate-800/90 flex flex-col justify-between space-y-2.5 group hover:border-indigo-500/50 transition-all min-w-0">
+                  <div className="flex items-center justify-between gap-1">
+                    <div className="p-2 sm:p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shrink-0">
+                      <Activity className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
-                    <span className="text-[10px] text-indigo-300 font-bold bg-indigo-950/60 px-2 py-0.5 rounded-full border border-indigo-800/60 truncate max-w-[100px]">
+                    <span className="text-[9px] sm:text-[10px] text-indigo-300 font-bold bg-indigo-950/80 px-2 py-0.5 rounded-full border border-indigo-800/80 whitespace-nowrap shrink-0">
                       0 réalisé
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider leading-none block">
+                    <span className="text-[10px] sm:text-xs font-semibold text-slate-400 leading-tight block truncate">
                       {t("dash_stat_treatments")}
                     </span>
-                    <p className="text-2xl sm:text-3xl font-black text-white mt-1">0</p>
+                    <p className="text-xl sm:text-3xl font-black text-white mt-1">0</p>
                   </div>
                 </div>
 
                 {/* Chiffre d'affaires Card */}
-                <div className="bg-slate-950/90 p-3.5 sm:p-4 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-3 group hover:border-emerald-500/50 transition-all">
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      <CreditCard className="w-4.5 h-4.5" />
+                <div className="bg-slate-950/90 p-3 sm:p-4 rounded-2xl border border-slate-800/90 flex flex-col justify-between space-y-2.5 group hover:border-emerald-500/50 transition-all min-w-0">
+                  <div className="flex items-center justify-between gap-1">
+                    <div className="p-2 sm:p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                      <CreditCard className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
-                    <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/60 truncate max-w-[100px]">
+                    <span className="text-[9px] sm:text-[10px] text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800/80 whitespace-nowrap shrink-0">
                       0% semaine
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider leading-none block">
+                    <span className="text-[10px] sm:text-xs font-semibold text-slate-400 leading-tight block truncate">
                       {t("dash_stat_revenue")}
                     </span>
-                    <p className="text-xl sm:text-2xl font-black text-white mt-1">0 DA</p>
+                    <p className="text-lg sm:text-2xl font-black text-white mt-1">0 DA</p>
                   </div>
                 </div>
               </div>

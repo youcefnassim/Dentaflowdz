@@ -44,7 +44,7 @@ export default function FloatingWidgets() {
   return (
     <>
       {/* Fixed Action Floating Buttons Container (Bottom-Right) */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 select-none">
+      <div className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2 select-none">
         {/* Support Button */}
         <motion.button
           initial={{ opacity: 0, scale: 0.8 }}
@@ -52,7 +52,7 @@ export default function FloatingWidgets() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsSupportOpen(!isSupportOpen)}
-          className="relative group flex items-center justify-center w-13 h-13 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 text-white shadow-xl shadow-blue-600/30 border border-blue-400/40 transition-all"
+          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 text-white shadow-xl shadow-blue-600/30 border border-blue-400/40 transition-all"
           aria-label="Support & Clinic Help"
         >
           {/* Active online pulse ring */}
@@ -62,9 +62,9 @@ export default function FloatingWidgets() {
           </span>
 
           {isSupportOpen ? (
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           ) : (
-            <Headphones className="w-6 h-6" />
+            <Headphones className="w-5 h-5 sm:w-6 sm:h-6" />
           )}
 
           {/* Tooltip on Hover */}
@@ -83,10 +83,10 @@ export default function FloatingWidgets() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.92 }}
               onClick={scrollToTop}
-              className="relative group flex items-center justify-center w-12 h-12 rounded-2xl bg-white text-slate-800 shadow-xl border border-slate-200 hover:bg-slate-50 hover:text-blue-600 transition-all"
+              className="relative group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white text-slate-800 shadow-xl border border-slate-200 hover:bg-slate-50 hover:text-blue-600 transition-all"
               aria-label="Back to Top"
             >
-              <ArrowUp className="w-5 h-5 stroke-[2.5]" />
+              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
               <span className="absolute right-16 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg border border-slate-700">
                 Back to Top
               </span>
