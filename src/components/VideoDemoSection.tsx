@@ -43,7 +43,7 @@ export default function VideoDemoSection() {
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                   {/* Backdrop Preview Image */}
                   <img
-                    src="/photo1.jpg"
+                    src="/images/photo1.jpg"
                     alt="DentaFlow Demo Video Preview"
                     className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
                   />
