@@ -112,137 +112,141 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
           className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200"
         >
           {/* Header banner */}
-          <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-blue-950 text-white p-6 sm:p-8 relative">
+          <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-blue-950 text-white p-4 sm:p-6 relative">
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors border border-slate-800"
+              className="absolute top-4 right-4 p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors border border-slate-800"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4.5 h-4.5" />
             </button>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-semibold tracking-wide border border-cyan-500/20 mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Démonstration Personnalisée
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 text-[11px] font-semibold tracking-wide border border-cyan-500/20 mb-2">
+              <Sparkles className="w-3 h-3 text-cyan-400" /> Démonstration Personnalisée
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            <h3 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white leading-tight">
               {t("demo_modal_title")}
             </h3>
-            <p className="mt-2 text-slate-300 text-sm leading-relaxed">
+            <p className="mt-1 text-slate-300 text-xs sm:text-sm leading-snug">
               {t("demo_modal_subtitle")}
             </p>
           </div>
 
           {/* Form / Success view */}
-          <div className="p-6 sm:p-8 bg-white">
+          <div className="p-4 sm:p-6 bg-white">
             {isSubmitted ? (
-              <div className="text-center py-6 space-y-4">
-                <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <CheckCircle2 className="w-10 h-10" />
+              <div className="text-center py-4 space-y-3">
+                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h4 className="text-xl font-bold text-slate-900">Demande enregistrée</h4>
-                <p className="text-slate-600 text-sm leading-relaxed max-w-md mx-auto">
+                <h4 className="text-lg font-bold text-slate-900">Demande enregistrée</h4>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
                   Si l'application WhatsApp ne s'est pas ouverte automatiquement sur votre appareil, cliquez ci-dessous pour envoyer votre message :
                 </p>
-                <div className="pt-2 flex flex-col gap-3">
+                <div className="pt-2 flex flex-col gap-2.5">
                   <a
                     href={currentWhatsappUrl}
-                    className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2"
+                    className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition-colors shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2"
                   >
                     <span>📲 Ouvrir WhatsApp (+213 776 665 110)</span>
                   </a>
                   <button
                     onClick={resetForm}
-                    className="w-full py-3 rounded-xl bg-slate-100 text-slate-700 font-bold text-sm hover:bg-slate-200 transition-colors border border-slate-200"
+                    className="w-full py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs sm:text-sm hover:bg-slate-200 transition-colors border border-slate-200"
                   >
                     Fermer la fenêtre
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
+                {/* Nom & Prénom */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                     {t("form_name")} *
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+                    <User className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                     <input
                       type="text"
                       placeholder={t("form_name_placeholder")}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl text-sm border bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all ${
+                      className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-xs sm:text-sm border bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all ${
                         errors.name ? "border-red-500" : "border-slate-200"
                       }`}
                     />
                   </div>
-                  {errors.name && <p className="mt-1 text-xs text-red-500 font-medium">{errors.name}</p>}
+                  {errors.name && <p className="mt-0.5 text-[11px] text-red-500 font-medium">{errors.name}</p>}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Téléphone & Wilaya (2 Columns on mobile & desktop) */}
+                <div className="grid grid-cols-2 gap-2.5">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                       {t("form_phone")} *
                     </label>
                     <div className="relative">
-                      <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+                      <Phone className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
                       <input
                         type="tel"
-                        placeholder={t("form_phone_placeholder")}
+                        placeholder="0550 12 34 56"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className={`w-full pl-10 pr-4 py-3 rounded-xl text-sm border bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all ${
+                        className={`w-full pl-8 pr-2.5 py-2.5 rounded-xl text-xs border bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all ${
                           errors.phone ? "border-red-500" : "border-slate-200"
                         }`}
                       />
                     </div>
-                    {errors.phone && <p className="mt-1 text-xs text-red-500 font-medium">{errors.phone}</p>}
+                    {errors.phone && <p className="mt-0.5 text-[11px] text-red-500 font-medium">{errors.phone}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                      {t("form_email")} *
-                    </label>
-                    <div className="relative">
-                      <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <input
-                        type="email"
-                        placeholder={t("form_email_placeholder")}
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full pl-10 pr-4 py-3 rounded-xl text-sm border bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all ${
-                          errors.email ? "border-red-500" : "border-slate-200"
-                        }`}
-                      />
-                    </div>
-                    {errors.email && <p className="mt-1 text-xs text-red-500 font-medium">{errors.email}</p>}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="sm:col-span-1">
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                       {t("form_wilaya")}
                     </label>
                     <div className="relative">
-                      <MapPin className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+                      <MapPin className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
                       <input
                         type="text"
                         placeholder="Alger, Oran..."
                         value={formData.wilaya}
                         onChange={(e) => setFormData({ ...formData, wilaya: e.target.value })}
-                        className="w-full pl-9 pr-3 py-3 rounded-xl text-sm border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                        className="w-full pl-8 pr-2.5 py-2.5 rounded-xl text-xs border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                       />
                     </div>
                   </div>
+                </div>
 
-                  <div className="sm:col-span-1">
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                {/* Email Address */}
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    {t("form_email")} *
+                  </label>
+                  <div className="relative">
+                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                    <input
+                      type="email"
+                      placeholder={t("form_email_placeholder")}
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className={`w-full pl-9 pr-3 py-2.5 rounded-xl text-xs sm:text-sm border bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all ${
+                        errors.email ? "border-red-500" : "border-slate-200"
+                      }`}
+                    />
+                  </div>
+                  {errors.email && <p className="mt-0.5 text-[11px] text-red-500 font-medium">{errors.email}</p>}
+                </div>
+
+                {/* Type de cabinet & Praticiens (2 Columns) */}
+                <div className="grid grid-cols-2 gap-2.5">
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                       {t("form_cabinet_type")}
                     </label>
                     <select
                       value={formData.cabinetType}
                       onChange={(e) => setFormData({ ...formData, cabinetType: e.target.value })}
-                      className="w-full px-3 py-3 rounded-xl text-sm border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-2.5 py-2.5 rounded-xl text-xs border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                     >
                       <option value="Cabinet individuel">{t("form_type_individual")}</option>
                       <option value="Clinique dentaire">{t("form_type_clinic")}</option>
@@ -250,14 +254,14 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     </select>
                   </div>
 
-                  <div className="sm:col-span-1">
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                       Praticiens
                     </label>
                     <select
                       value={formData.practitioners}
                       onChange={(e) => setFormData({ ...formData, practitioners: e.target.value })}
-                      className="w-full px-3 py-3 rounded-xl text-sm border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-2.5 py-2.5 rounded-xl text-xs border border-slate-200 bg-slate-50 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                     >
                       <option value="1 Praticien">{t("form_practitioners_1")}</option>
                       <option value="2 à 5 Praticiens">{t("form_practitioners_2")}</option>
@@ -266,11 +270,12 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   </div>
                 </div>
 
-                <div className="pt-3">
+                {/* Submit Button */}
+                <div className="pt-2">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-base shadow-lg shadow-blue-500/25 transition-all active:scale-98 disabled:opacity-50"
+                    className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-sm shadow-md shadow-blue-500/20 transition-all active:scale-98 disabled:opacity-50"
                   >
                     {isSubmitting ? "Envoi en cours..." : t("form_submit_btn")}
                   </button>
