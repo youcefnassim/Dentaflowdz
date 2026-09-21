@@ -12,7 +12,8 @@ import {
   CheckCircle2,
   Clock,
   ShieldCheck,
-  Send
+  Send,
+  Instagram
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import DemoModal from "./DemoModal";
@@ -161,18 +162,20 @@ export default function FloatingWidgets() {
               </a>
 
               <a
-                href="mailto:dentaflowdz@gmail.com"
-                className="w-full flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 hover:border-blue-300 text-slate-800 text-xs font-semibold transition-all hover:bg-slate-50"
+                href="https://www.instagram.com/denta.flow"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-between p-3 rounded-xl bg-pink-50 border border-pink-200 hover:border-pink-400 text-slate-800 text-xs font-semibold transition-all hover:bg-pink-100/50"
               >
                 <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-cyan-600" />
+                  <Instagram className="w-4 h-4 text-pink-600" />
                   <div>
-                    <p className="text-slate-900 font-bold">Email Support</p>
-                    <p className="text-[10px] text-slate-500 font-mono">dentaflowdz@gmail.com</p>
+                    <p className="text-slate-900 font-bold">Instagram Officiel</p>
+                    <p className="text-[10px] text-pink-700 font-mono">@denta.flow</p>
                   </div>
                 </div>
-                <span className="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-                  24h Reply
+                <span className="text-[10px] text-pink-700 bg-pink-100 px-2 py-0.5 rounded font-bold border border-pink-200">
+                  Instagram
                 </span>
               </a>
 

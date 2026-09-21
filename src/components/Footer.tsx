@@ -52,13 +52,13 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/denta.flow"
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-pink-400 transition-colors"
                 >
-                  <Instagram className="w-4 h-4 text-cyan-400" />
-                  <span>Instagram</span>
+                  <Instagram className="w-4 h-4 text-pink-400" />
+                  <span>Instagram (@denta.flow)</span>
                 </a>
               </li>
               <li>

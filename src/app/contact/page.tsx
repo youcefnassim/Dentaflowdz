@@ -13,7 +13,8 @@ import {
   ShieldCheck,
   MapPin,
   Clock,
-  Sparkles
+  Sparkles,
+  Instagram
 } from "lucide-react";
 import CTA from "@/components/CTA";
 
@@ -121,6 +122,23 @@ export default function ContactPage() {
                     className="text-emerald-400 hover:text-emerald-300 underline mt-0.5 inline-block font-mono text-xs font-bold"
                   >
                     +213 776 665 110 (Contact sur WhatsApp)
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-9 h-9 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center flex-shrink-0">
+                  <Instagram className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-xs uppercase tracking-wider">Instagram Officiel</h4>
+                  <a
+                    href="https://www.instagram.com/denta.flow"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-400 hover:text-pink-300 underline mt-0.5 inline-block font-mono text-xs font-bold"
+                  >
+                    @denta.flow (Suivre l'actualité)
                   </a>
                 </div>
               </div>
