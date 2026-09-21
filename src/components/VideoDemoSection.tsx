@@ -2,13 +2,12 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Play, CheckCircle2, Monitor } from 'lucide-react';
+import { CheckCircle2, Monitor } from 'lucide-react';
 import DemoModal from './DemoModal';
 
 export default function VideoDemoSection() {
   const { t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const videoHighlights = [
     t('video_feature_1'),
@@ -38,38 +37,16 @@ export default function VideoDemoSection() {
 
           {/* Video Container / Player Mockup */}
           <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden border border-slate-800 bg-slate-950/80 shadow-2xl relative group">
-            <div className="aspect-video relative flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-              {!isPlaying ? (
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                  {/* Backdrop Preview Image */}
-                  <img
-                    src="/images/photo1.jpg"
-                    alt="DentaFlow Demo Video Preview"
-                    className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[2px]" />
-
-                  {/* Play Button */}
-                  <button
-                    onClick={() => setIsPlaying(true)}
-                    className="relative z-10 w-20 h-20 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 flex items-center justify-center shadow-lg shadow-cyan-500/30 hover:scale-110 transition-all duration-300"
-                    aria-label="Play Video"
-                  >
-                    <Play className="w-8 h-8 fill-current ml-1" />
-                  </button>
-                  <p className="relative z-10 mt-4 text-sm font-semibold text-cyan-300 tracking-wide uppercase">
-                    Regarder la présentation DentaFlow (90s)
-                  </p>
-                </div>
-              ) : (
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"
-                  title="DentaFlow Demo Video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              )}
+            <div className="aspect-video relative flex items-center justify-center bg-black">
+              <video
+                src="/dentaflow-demo.mp4"
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              />
             </div>
 
             {/* Highlights Bar */}
