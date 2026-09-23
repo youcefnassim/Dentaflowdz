@@ -14,6 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.dentaflow.website"),
   title: {
     default: "DentaFlow — Logiciel de gestion pour cabinet dentaire",
     template: "%s | DentaFlow",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://dentaflowdz.vercel.app",
+    url: "https://www.dentaflow.website",
     title: "DentaFlow — Logiciel de gestion pour cabinet dentaire",
     description:
       "DentaFlow simplifie la gestion des cabinets dentaires : patients, rendez-vous, odontogrammes, traitements, facturation et statistiques, même hors ligne.",

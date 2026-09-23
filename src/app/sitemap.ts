@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://dentaflow.app";
+  const baseUrl = "https://www.dentaflow.website";
 
   return [
     {

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://dentaflow.app/sitemap.xml",
+    sitemap: "https://www.dentaflow.website/sitemap.xml",
   };
 }
